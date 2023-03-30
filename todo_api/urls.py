@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import (TodoListApiView, TodoDetailApiView)
+from . import views
+from .views import TodoDetailApiView
 
 urlpatterns = [
-    path("api", TodoListApiView.as_view()),
-    path("api/<int:todo_id>/", TodoDetailApiView.as_view())
+    path("create", views.post),
+    path("all", views.get),
+    path("todo/<int:todo_id>", TodoDetailApiView.as_view())
 ]
