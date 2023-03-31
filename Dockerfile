@@ -1,26 +1,14 @@
-# base image  
-FROM python:3.8   
-# setup environment variable  
-ENV DockerHOME=/home/app/webapp  
+#Tells Docker to use the official python 3 image from dockerhub as a base image
+FROM python:3
+# Sets an environmental variable that ensures output from python is sent straight to the terminal without buffering it first
+ENV PYTHONUNBUFFERED 1
+# Sets the container's working directory to /app
+WORKDIR /app
+# Copies all files from our local project into the container
+COPY requirements.txt /app/requirements.txt
+# runs the pip install command for all packages listed in the requirements.txt file
+RUN python3 -m pip install -r requirements.txt
 
-# set work directory  
-RUN mkdir -p $DockerHOME  
+COPY . /app
 
-# where your code lives  
-WORKDIR $DockerHOME  
-
-# set environment variables  
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1  
-
-# install dependencies  
-RUN pip install --upgrade pip  
-
-# copy whole project to your docker home directory. 
-COPY . $DockerHOME  
-# run this command to install all dependencies  
-RUN pip install -r requirements.txt  
-# port where the Django app runs  
-EXPOSE 8000  
-# start server  
-CMD python manage.py runserver  
+RUN python3 manage.py runserver 0.0.0.0:8000
