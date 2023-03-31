@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  todo_app:
+    build: .
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+
+    mongodb:
+    restart: always
+    image: mongo:3.4.7
+    ports:
+      - "27017:27017"
+    command: mongodb
+
