@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-64roc5uz_e=%5)holrj%6)lw!uf#78f48j1fkb2sj9+=-5s4=g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # "0.0.0.0",
+    "192.168.1.17",
+    "localhost"
+]
+
 
 
 # Application definition
@@ -77,18 +82,18 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    #}
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'todo',
-        'CLIENT' : {
-            'host': 'mongodb',
-            'port': 27017,
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME': 'todo',
+    #     'CLIENT' : {
+    #         'host': 'mongodb',
+    #         'port': 27017,
+    #     }
+    # }
 
 }
 
