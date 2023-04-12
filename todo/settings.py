@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,9 +27,9 @@ SECRET_KEY = 'django-insecure-64roc5uz_e=%5)holrj%6)lw!uf#78f48j1fkb2sj9+=-5s4=g
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # "0.0.0.0",
+    "0.0.0.0",
     "192.168.1.17",
-    "localhost"
+    "localhost",
 ]
 
 
@@ -88,10 +89,11 @@ DATABASES = {
     }
     # 'default': {
     #     'ENGINE': 'djongo',
-    #     'NAME': 'todo',
+    #     'NAME': 'mongo_db',
     #     'CLIENT' : {
-    #         'host': 'mongodb',
-    #         'port': 27017,
+    #         'host': 'mongo',
+    #         'username': 'root',
+    #         'Password': 'root'
     #     }
     # }
 
